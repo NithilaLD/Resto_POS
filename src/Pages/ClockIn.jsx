@@ -1,8 +1,11 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import { LoginContext } from '../context/LoginContext'
+
 
 function ClockIn() {
+  const { employeeName } = useContext(LoginContext);
   return (
-    <div>ClockIn</div>
+    <div>ClockIn as : {employeeName}</div>
   )
 }
 

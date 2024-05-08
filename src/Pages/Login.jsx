@@ -1,12 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import './Login.css';
 import Clock1 from '../components/Clock 1';
 import Clock2 from '../components/Clock 2';
 import Device from '../components/Device';
 import { staffAuth } from '../Services/StaffAuth';
 import { useNavigate } from 'react-router-dom';
-function Login()
-{  
+import { LoginContext } from '../context/LoginContext';
+
+function Login(){
+  const {setEmployeeName} = useContext(LoginContext);
+  const {setEmployeeId} = useContext(LoginContext);
+
   const navigate = useNavigate();
   const [password, setPassword] = useState("")
   const [divBgColor, setDivBgColor] = useState('#070005');
@@ -19,7 +23,7 @@ function Login()
   {
     const digit = num.toString();
     await setPassword((pre)=>pre + digit);
-    setDivBgColor('#8B7500');
+    setDivBgColor('#003cff');
     setRound((prev)=>prev+1);
     if(round===0){setSpanBgColor1('white');setSpanBgColor2('#8B7500');setSpanBgColor3('#8B7500');setSpanBgColor4('#8B7500');}
     else if(round===1){setSpanBgColor1('white');setSpanBgColor2('white');setSpanBgColor3('#8B7500');setSpanBgColor4('#8B7500');}
@@ -28,7 +32,10 @@ function Login()
     try {
       const data = await staffAuth(password+digit);
       console.log(data);
-      if(data){navigate("/clockin");}
+      if(data){
+        setEmployeeId(data.employerId);
+        setEmployeeName(data.employerName);
+        navigate("/clockin");}
       else{
         console.log("no data");
         handleButtonClick2();
