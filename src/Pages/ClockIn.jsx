@@ -4,6 +4,7 @@ import { LoginContext } from "../context/LoginContext";
 import BlueButton from "../components/Button";
 import Clock3 from "../components/Clock 3";
 import Clock1 from "../components/Clock 1";
+import { useNavigate } from "react-router-dom";
 
 function ClockIn() {
   const { employeeName } = useContext(LoginContext);
@@ -84,8 +85,18 @@ function ClockIn() {
                   }}
                 >
                   <h2>Select job role</h2>
-                  <BlueButton label="Server" />
-                  <BlueButton label="Bartender" />
+                  <BlueButton
+                    onClick={() => {
+                      const navigate = useNavigate();
+                      navigate("/dashboard")}}
+                    label="Server"
+                  />
+                  <BlueButton
+                    onClick={() => {
+                      const navigate = useNavigate();
+                      navigate("/dashboard")}}
+                    label="Bartender"
+                  />
                 </div>
               </div>
             </>
