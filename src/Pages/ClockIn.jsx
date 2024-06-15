@@ -10,6 +10,7 @@ function ClockIn() {
   const { employeeName } = useContext(LoginContext);
   const [isClockedIn, setIsClockedIn] = useState(false);
   const [startTime, setStartTime] = useState(null);
+  const navigate = useNavigate();
 
   const handleClockIn = () => {
     setIsClockedIn(true);
@@ -61,12 +62,12 @@ function ClockIn() {
 
           <div className="flex items-center justify-center text-white">
             <button
+              className="bg-blue-bg-color"
               onClick={handleClockIn}
               style={{
                 width: "800px",
                 margin: "20px 0",
                 padding: "10px 20px",
-                background: "blue",
                 borderRadius: "12px",
               }}
             >
@@ -85,16 +86,20 @@ function ClockIn() {
                   }}
                 >
                   <h2>Select job role</h2>
-                  <BlueButton
+                  <BlueButton nav="/dashboard" label="Server" />
+                  <button
                     onClick={() => {
-                      const navigate = useNavigate();
-                      navigate("/dashboard")}}
-                    label="Server"
-                  />
+                      navigate("/dashboard");
+                      console.log("click");
+                    }}
+                  >
+                    hello
+                  </button>
                   <BlueButton
+                    nav="/dashboard"
                     onClick={() => {
-                      const navigate = useNavigate();
-                      navigate("/dashboard")}}
+                      navigate("/dashboard");
+                    }}
                     label="Bartender"
                   />
                 </div>

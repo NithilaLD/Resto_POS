@@ -1,0 +1,106 @@
+{
+  "Appetizers": [
+    {
+      "id": 1,
+      "name": "Fish Cutlets",
+      "price": 250.0
+    },
+    {
+      "id": 2,
+      "name": "Mutton Rolls",
+      "price": 350.0
+    },
+    {
+      "id": 3,
+      "name": "Vegetable Roti",
+      "price": 200.0
+    },
+    {
+      "id": 4,
+      "name": "Pol Sambol and Bread",
+      "price": 150.0
+    },
+    {
+      "id": 5,
+      "name": "Fish Patties",
+      "price": 300.0
+    },
+    {
+      "id": 6,
+      "name": "Sri Lankan Deviled Chicken",
+      "price": 500.0
+    },
+    {
+      "id": 7,
+      "name": "Egg Hoppers",
+      "price": 100.0
+    },
+    {
+      "id": 8,
+      "name": "Cuttlefish Fry",
+      "price": 450.0
+    },
+    {
+      "id": 9,
+      "name": "Beef Samosa",
+      "price": 300.0
+    },
+    {
+      "id": 10,
+      "name": "Kottu Roti (Mini)",
+      "price": 400.0
+    }
+  ],
+  "Salads": [
+    {
+      "id": 11,
+      "name": "Mallung (Leafy Green Salad)",
+      "price": 200.0
+    },
+    {
+      "id": 12,
+      "name": "Gotukola Sambol",
+      "price": 150.0
+    },
+    {
+      "id": 13,
+      "name": "Cucumber Salad",
+      "price": 100.0
+    },
+    {
+      "id": 14,
+      "name": "Lentil Salad",
+      "price": 250.0
+    },
+    {
+      "id": 15,
+      "name": "Mixed Vegetable Salad",
+      "price": 300.0
+    },
+    {
+      "id": 16,
+      "name": "Coconut Sambol",
+      "price": 150.0
+    },
+    {
+      "id": 17,
+      "name": "Pineapple Salad",
+      "price": 200.0
+    },
+    {
+      "id": 18,
+      "name": "Carrot and Raisin Salad",
+      "price": 250.0
+    },
+    {
+      "id": 19,
+      "name": "Beetroot Salad",
+      "price": 300.0
+    },
+    {
+      "id": 20,
+      "name": "Spicy Mango Salad",
+      "price": 350.0
+    }
+  ]
+}
