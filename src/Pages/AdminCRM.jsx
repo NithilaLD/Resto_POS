@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import'../color.css'
+import'../darkcolor.css'
 import { getAllCustomers } from "../Services/CustomerService";
 import AdminEditCustomerPopup from "../components/AdminEditCustomerPopup";
 
 function AdminCRM() {
   const [customers, setCustomers] = useState([]);
   const [selectedCustomer, setSelectedCustomer] = useState({})
+  const [update, setUpdate] = useState(false)
 
   // Popup stat Management
   const [isNewCustomerPopupOpen, setIsNewCustomerPopupOpen] = useState()
@@ -31,13 +32,22 @@ function AdminCRM() {
     };
 
     fetchBills();
-  }, []);
+  }, [update]);
+
+  const handlUpdate = () => {
+    if(update){
+      setUpdate(false)
+    }else{
+      setUpdate(true);
+    }
+    
+  }
 
   return (
     <div className="flex flex-col w-full !text-black">
       {/* <span className="text-black w-full text-3xl">Customer Management</span> */}
       <div className="flex flex-row justify-end w-full">
-        <button className="bg-blue-bg-color w-fit py-2 px-4 rounded-lg">
+        <button className="bg-blue-bg-color text-white w-fit py-2 px-4 rounded-lg">
           New Customer
         </button>
       </div>
@@ -69,6 +79,7 @@ function AdminCRM() {
                   key={index}
                   onClick={() => {
                     console.log("click");
+                    setSelectedCustomer(item);
                     handleOpenEditCustomerPopup();
                   }}
                 >
@@ -93,7 +104,7 @@ function AdminCRM() {
                 </td>
               </tr>
             )}
-            {isEditCustomerPopupOpen && <AdminEditCustomerPopup onClose={handleCloseEditCustomerPopup}/>}
+            {isEditCustomerPopupOpen && <AdminEditCustomerPopup onClose={handleCloseEditCustomerPopup} customer={selectedCustomer} update={handlUpdate} />}
           </tbody>
         </table>
       </div>

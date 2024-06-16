@@ -1,4 +1,4 @@
-import "../color.css";
+
 import React, { useState, useEffect } from "react";
 import { allBills } from "../Services/BillService";
 

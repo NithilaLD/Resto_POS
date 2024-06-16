@@ -1,3 +1,4 @@
+import "../color.css";
 import React, { useState, useEffect } from "react";
 import BillItem from "../components/BillItem";
 import MenuPopup from "../components/MenuPopup";
@@ -9,8 +10,6 @@ import TipPopup from "../components/TipPopup";
 import OffersPopup from "../components/OffersPopup";
 import OrderMethodPopup from "../components/OrderMethodPopup";
 import BillItemPopup from "../components/BillItemPopup";
-import '../darkcolor.css'
-
 
 function POS() {
   const [menu, setMenu] = useState(MenuData);
@@ -178,7 +177,7 @@ function POS() {
               Salads
             </div>
             <div
-              className="bg-yellow-500 col-start-3 col-end-4 row-start-2 row-end-3 flex text-xl p-4 cursor-pointer"
+              className="bg-yellow-500 col-start-4 col-end-5 row-start-4 row-end-5 flex text-xl p-4 cursor-pointer"
               onClick={() => {
                 setMenuPopupShow(true);
                 setMenuCategory("Sides");
@@ -205,7 +204,7 @@ function POS() {
               Street Food
             </div>
             <div
-              className="bg-gray-500 col-start-3 col-end-4 row-start-3 row-end-5 flex text-xl p-4 cursor-pointer"
+              className="bg-gray-500 col-start-3 col-end-4 row-start-2 row-end-5 flex text-xl p-4 cursor-pointer"
               onClick={() => {
                 setMenuPopupShow(true);
                 setMenuCategory("Desserts");
@@ -266,16 +265,12 @@ function POS() {
           </div>
         </div>
 
-        <div className="flex flex-col p-2 justify-between basis-3/12 bg-secondry-bg-color rounded-lg">
+        <div className="flex flex-col p-2 justify-between basis-3/12 h-full bg-secondry-bg-color rounded-lg">
           {/* bill Items area */}
-<<<<<<< HEAD
           <div
             className="w-full overflow-y-scroll scroller flex flex-col space-y-2 snap-x"
-            style={{ maxHeight: "calc(100vh - 315px)" }}
+            style={{ maxHeight: "49vh" }}
           >
-=======
-          <div className="w-full h-79 overflow-y-scroll scroller flex flex-col space-y-2 snap-x">
->>>>>>> a2eefb6c33de2afb155783bab51c61cc6c1d6fc3
             {billItems.map((item, index) => {
               return (
                 <div

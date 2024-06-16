@@ -35,7 +35,12 @@ function Login(){
       if(data){
         setEmployeeId(data.employerId);
         setEmployeeName(data.employerName);
-        navigate("/clockin");}
+        if (data.employerName == "Admin"){navigate("/admin/home");}
+
+        else{
+          navigate("/clockin");
+        }
+        }
       else{
         console.log("no data");
         handleButtonClick2();

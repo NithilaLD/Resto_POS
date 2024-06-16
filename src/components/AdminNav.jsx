@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import AdminLogout from "./AdminLogout";
 
 function AdminNav() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isLogoutPopupOpen, setIsLogoutPopupOpen] = useState(false);
+
+    const handleOpenLogoutPopup = () => {
+      setIsLogoutPopupOpen(true);
+    };
+    const handleCloseLogoutPopup = () => {
+      setIsLogoutPopupOpen(false);
+    };
   return (
     <div>
       <div className="bg-blue-bg-color h-full w-fit rounded-lg flex flex-col justify-between items-start pb-2 ">
@@ -34,7 +43,12 @@ function AdminNav() {
           </Link> */}
         </div>
         <div>
-          <i className="fi fi-rr-sign-out-alt text-2xl text-white mx-3 "></i>
+          <i className="fi fi-rr-sign-out-alt text-2xl text-white mx-3 "
+          onClick={
+            handleOpenLogoutPopup
+          }
+          ></i>
+          {isLogoutPopupOpen && (<AdminLogout onClose={handleCloseLogoutPopup} />) }
         </div>
         <div></div>
       </div>
