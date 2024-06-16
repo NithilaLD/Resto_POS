@@ -85,7 +85,7 @@ function ClockIn() {
                     width: "200px",
                   }}
                 >
-                  <h2>Select job role</h2>
+                  <h2 className="text-yellow-300">Select Job Role</h2>
                   <BlueButton nav="/dashboard" label="Server" />
                   <button
                     onClick={() => {
@@ -93,7 +93,6 @@ function ClockIn() {
                       console.log("click");
                     }}
                   >
-                    hello
                   </button>
                   <BlueButton
                     nav="/dashboard"
