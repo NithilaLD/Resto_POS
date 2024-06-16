@@ -265,12 +265,10 @@ function POS() {
           </div>
         </div>
 
-        <div className="flex flex-col p-2 justify-between basis-3/12 h-full bg-secondry-bg-color rounded-lg">
+        <div className="flex flex-col p-2 justify-between basis-3/12 bg-secondry-bg-color rounded-lg">
           {/* bill Items area */}
-          <div
-            className="w-full overflow-y-scroll scroller flex flex-col space-y-2 snap-x"
-            style={{ maxHeight: "49vh" }}
-          >
+          <div className="w-full overflow-y-scroll scroller flex flex-col space-y-2 snap-x" style={{ maxHeight: '49vh' }}/*290px*/>
+
             {billItems.map((item, index) => {
               return (
                 <div
@@ -309,7 +307,7 @@ function POS() {
 
           {/* bill amount area */}
           <div className="flex flex-col bg-lite-bg-color rounded-lg">
-            <div className="flex flex-col p-3 pt-4">
+            <div className="flex flex-col p-2 pt-2">
               <div className="flex flex-row justify-between">
                 <span>Sub Total</span>
                 <span>{subTotal}.00</span>
@@ -322,7 +320,7 @@ function POS() {
                 <span>Tip</span>
                 <span>{tip}.00</span>
               </div>
-              <div className="flex flex-row justify-between mt-5">
+              <div className="flex flex-row justify-between mt-3">
                 <span className="text-2xl">Total</span>
                 <span className="text-2xl">{total}.00</span>
               </div>
