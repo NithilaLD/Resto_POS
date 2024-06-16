@@ -93,7 +93,6 @@ function ClockIn() {
                       console.log("click");
                     }}
                   >
-                    hello
                   </button>
                   <BlueButton
                     nav="/dashboard"
