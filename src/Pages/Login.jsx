@@ -23,7 +23,7 @@ function Login(){
   {
     const digit = num.toString();
     await setPassword((pre)=>pre + digit);
-    setDivBgColor('#003cff');
+    setDivBgColor('#00008B');
     setRound((prev)=>prev+1);
     if(round===0){setSpanBgColor1('white');setSpanBgColor2('#8B7500');setSpanBgColor3('#8B7500');setSpanBgColor4('#8B7500');}
     else if(round===1){setSpanBgColor1('white');setSpanBgColor2('white');setSpanBgColor3('#8B7500');setSpanBgColor4('#8B7500');}
