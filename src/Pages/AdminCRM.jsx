@@ -1,7 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import'../color.css'
+import { getAllCustomers } from "../Services/CustomerService";
+import AdminEditCustomerPopup from "../components/AdminEditCustomerPopup";
 
 function AdminCRM() {
+  const [customers, setCustomers] = useState([]);
+  const [selectedCustomer, setSelectedCustomer] = useState({})
+
+  // Popup stat Management
+  const [isNewCustomerPopupOpen, setIsNewCustomerPopupOpen] = useState()
+  const [isEditCustomerPopupOpen, setIsEditCustomerPopupOpen] = useState()
+
+  // Edit customer handlers
+  const handleOpenEditCustomerPopup = () => {
+    setIsEditCustomerPopupOpen(true);
+  }
+  const handleCloseEditCustomerPopup = () => {
+    setIsEditCustomerPopupOpen(false);
+  };
+
+  useEffect(() => {
+    const fetchBills = async () => {
+      try {
+        const customersValue = await getAllCustomers();
+        console.log(customersValue);
+        setCustomers(customersValue);
+      } catch (error) {
+        console.error("Error fetching cusomers:", error);
+      }
+    };
+
+    fetchBills();
+  }, []);
+
   return (
     <div className="flex flex-col w-full !text-black">
       {/* <span className="text-black w-full text-3xl">Customer Management</span> */}
@@ -10,7 +41,10 @@ function AdminCRM() {
           New Customer
         </button>
       </div>
-      <div className="mt-5">
+      <div
+        className="mt-5 flex overflow-y-auto scrollbar-hide"
+        style={{ height: "80vh" }}
+      >
         <table className="w-full border-collapse">
           <thead>
             <tr>
@@ -29,20 +63,26 @@ function AdminCRM() {
             </tr>
           </thead>
           <tbody>
-            {/* {bills.length > 0 ? (
-              bills.map((item) => (
-                <tr key={item.id}>
+            {customers.length > 0 ? (
+              customers.map((item, index) => (
+                <tr
+                  key={index}
+                  onClick={() => {
+                    console.log("click");
+                    handleOpenEditCustomerPopup();
+                  }}
+                >
                   <td className="pl-2 py-1.5 border  border-lite-bg-color text-black">
-                    {item.id}
+                    {item.first_name}
                   </td>
-                  <td className="text-right pr-2 border border-lite-bg-color text-black">
-                    {item.subtotal}
+                  <td className="pl-2 pr-2 border border-lite-bg-color text-black">
+                    {item.last_name}
                   </td>
-                  <td className="text-right pr-2 border border-lite-bg-color text-black">
-                    {item.tip}
+                  <td className="pl-2 pr-2 border border-lite-bg-color text-black">
+                    {item.email}
                   </td>
-                  <td className="text-right pr-2 border border-lite-bg-color text-black">
-                    {item.total}
+                  <td className="pl-2 pr-2 border border-lite-bg-color text-black">
+                    {item.phone}
                   </td>
                 </tr>
               ))
@@ -52,7 +92,8 @@ function AdminCRM() {
                   No bills found
                 </td>
               </tr>
-            )} */}
+            )}
+            {isEditCustomerPopupOpen && <AdminEditCustomerPopup onClose={handleCloseEditCustomerPopup}/>}
           </tbody>
         </table>
       </div>

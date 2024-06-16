@@ -1,4 +1,4 @@
-import './App.css';
+// import './App.css';
 import React,{useState, useEffect} from 'react';
 import ClockIn from './Pages/ClockIn';
 import Login from './Pages/Login'

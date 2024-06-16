@@ -2,21 +2,23 @@ import React, { useState, useEffect } from "react";
 import BillItem from "../components/BillItem";
 import MenuPopup from "../components/MenuPopup";
 import MenuData from "./MenData";
-import "../components/Scroller.css"
+import "../components/Scroller.css";
 import { billService } from "../Services/BillService";
 import BillPopup from "../components/BillPopup";
 import TipPopup from "../components/TipPopup";
 import OffersPopup from "../components/OffersPopup";
 import OrderMethodPopup from "../components/OrderMethodPopup";
 import BillItemPopup from "../components/BillItemPopup";
+import '../darkcolor.css'
+
 
 function POS() {
   const [menu, setMenu] = useState(MenuData);
   const [bill, setBill] = useState({});
-  const [billItems,setBillItems] = useState([]);
+  const [billItems, setBillItems] = useState([]);
   const [billDescription, setBillDesription] = useState();
-  const [menuCategory, setMenuCategory] = useState('');
-  const [selectedBillItem, setSelectedBillItem] = useState({})
+  const [menuCategory, setMenuCategory] = useState("");
+  const [selectedBillItem, setSelectedBillItem] = useState({});
 
   // Popup window state
   const [menuPopupShow, setMenuPopupShow] = useState(false);
@@ -27,89 +29,92 @@ function POS() {
   const [isBillItemPopupOpen, setIsBillItemPopupOpen] = useState(false);
 
   // bill description state
-  const [customer,setCustomer] = useState('');
-  const [orderMethod, setOrderMethod] = useState('');
-  const [subTotal,setSubTotal] = useState(20);
-  const [tip,setTip] = useState(0)
-  const [offer,setOffer] = useState(0);
-  const [total,setTotal] = useState(0);
+  const [customer, setCustomer] = useState("");
+  const [orderMethod, setOrderMethod] = useState("");
+  const [subTotal, setSubTotal] = useState(20);
+  const [tip, setTip] = useState(0);
+  const [offer, setOffer] = useState(0);
+  const [total, setTotal] = useState(0);
 
-  useEffect(()=>{billCalculate()},[billItems,offer,tip]);
-  useEffect(()=>{console.log(selectedBillItem)},[selectedBillItem])
+  useEffect(() => {
+    billCalculate();
+  }, [billItems, offer, tip]);
+  useEffect(() => {
+    console.log(selectedBillItem);
+  }, [selectedBillItem]);
 
-  const billCalculate = ()=>{
+  const billCalculate = () => {
     let subTotalValue = 0;
-    billItems.map((items)=>{
+    billItems.map((items) => {
       subTotalValue = subTotalValue + items["amount"];
-      
-    })
-    setSubTotal(prevValue=>{return subTotalValue});
-    setTotal(prevValue=>{
+    });
+    setSubTotal((prevValue) => {
+      return subTotalValue;
+    });
+    setTotal((prevValue) => {
       const totalValue = subTotalValue - offer + tip;
       return totalValue;
-    })
-    
-  }
+    });
+  };
 
-  const billCreate = ()=>{
+  const billCreate = () => {
     const billObject = {
-      "billDescription": {
-        "subTotal":subTotal,
-        "offers":offer,
-        "tip":tip,
-        "total":total
+      billDescription: {
+        subTotal: subTotal,
+        offers: offer,
+        tip: tip,
+        total: total,
       },
-      "billItems":billItems
+      billItems: billItems,
     };
     setBill(billObject);
     console.log(billObject);
     // billService(billObject)
-  }
+  };
 
-
-  const addBillItem = (item)=>{
-    setBillItems(prevItems=>[...prevItems,item]);
+  const addBillItem = (item) => {
+    setBillItems((prevItems) => [...prevItems, item]);
     // console.log(billItems);
-    billCalculate()
-  }
+    billCalculate();
+  };
 
   //Popup Handlers
-  const menuPopupHandle=(value)=>{
-    setMenuPopupShow(value)
-  }
+  const menuPopupHandle = (value) => {
+    setMenuPopupShow(value);
+  };
 
   // Bill Popup Handlers
   const handleOpenBillPopup = () => {
-    setIsBillPopupOpen(true)
-  }
+    setIsBillPopupOpen(true);
+  };
   const handleCloseBillPopup = () => {
     setIsBillPopupOpen(false);
   };
   const handleNewBill = () => {
     setBillItems([]);
-  }
+  };
 
   // Tip Popup Handlers
   const handleOpenTipPopup = () => {
     setIsTipPopupOpen(true);
-  }
+  };
   const handleCloseTipPopup = () => {
     setIsTipPopupOpen(false);
   };
-  const tipChange = (value) =>{
+  const tipChange = (value) => {
     setTip(value);
-  }
+  };
 
   // Offers Popup Handlers
   const handleOpenOffersPopup = () => {
     setIsOffersPopupOpen(true);
-  }
+  };
   const handleCloseOffersPopup = () => {
     setIsOffersPopupOpen(false);
   };
   const offersChange = (value) => {
-    setOffer(value)
-  }
+    setOffer(value);
+  };
 
   // Oder Method Handler
   const handleOpenOrderMethodPopup = () => {
@@ -120,7 +125,7 @@ function POS() {
   };
   const orderMethodHandle = (value) => {
     setOrderMethod(value);
-  }
+  };
 
   // Bill Item Popup Handler
   const handleOpenBillItemPopup = () => {
@@ -131,9 +136,7 @@ function POS() {
   };
   const handleSelectBillItem = () => {
     return selectedBillItem;
-  }
-
-
+  };
 
   return (
     <>
@@ -193,7 +196,7 @@ function POS() {
               Rice And Curry
             </div>
             <div
-              className="bg-blue-500 col-start-2 col-end-2 row-start-4 row-end-6 flex text-xl p-4 cursor-pointer"
+              className="bg-blue-500 col-start-2 col-end-2 row-start-3 row-end-5 flex text-xl p-4 cursor-pointer"
               onClick={() => {
                 setMenuPopupShow(true);
                 setMenuCategory("StreetFood");
@@ -249,7 +252,7 @@ function POS() {
               )}
             </div>
             <div
-              className="bg-lite-bg-color col-start-3 col-end-3 row-start-6 row-end-9 flex text-xl p-1 cursor-pointer flex-row"
+              className="bg-lite-bg-color col-start-3 col-end-3 row-start-7 row-end-9 flex text-xl p-1 cursor-pointer flex-row"
               onClick={() => {
                 handleOpenOrderMethodPopup();
               }}
@@ -263,9 +266,12 @@ function POS() {
           </div>
         </div>
 
-        <div className="flex flex-col p-2 justify-between basis-3/12 h-full bg-secondry-bg-color rounded-lg">
+        <div className="flex flex-col p-2 justify-between basis-3/12 bg-secondry-bg-color rounded-lg">
           {/* bill Items area */}
-          <div className="w-full h-96 overflow-y-scroll scroller flex flex-col space-y-2 snap-x">
+          <div
+            className="w-full overflow-y-scroll scroller flex flex-col space-y-2 snap-x"
+            style={{ maxHeight: "calc(100vh - 315px)" }}
+          >
             {billItems.map((item, index) => {
               return (
                 <div

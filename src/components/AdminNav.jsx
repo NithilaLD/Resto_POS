@@ -29,9 +29,9 @@ function AdminNav() {
             <i className="fi fi-rr-receipt text-2xl text-white mx-3 "></i>
           </Link>
 
-          <Link to="/admin/report">
+          {/* <Link to="/admin/report">
             <i className="fi fi-rr-checklist-task-budget text-2xl text-white mx-3 "></i>
-          </Link>
+          </Link> */}
         </div>
         <div>
           <i className="fi fi-rr-sign-out-alt text-2xl text-white mx-3 "></i>

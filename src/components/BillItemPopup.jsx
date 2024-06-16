@@ -26,7 +26,6 @@ function BillItemPopup({item,onClose}) {
           ></i>
         </div>
         <div>
-          <h1>hell</h1>
           <h1>{item.name}</h1>
           <div className="bg-lite-bg-color w-fit rounded-full p-2 mt-8">
             <i

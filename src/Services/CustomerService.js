@@ -1,3 +1,4 @@
+const uri = "http://localhost:3060";
 export const customerSearch = async (query) => {
   // const url = "https://resto-backend-n5n7.onrender.com/staff/auth";
   const urlTest = "http://localhost:3060";
@@ -21,7 +22,7 @@ export const customerSearch = async (query) => {
 
 export const createCustomer = async (customerData) => {
   try {
-    const response = await fetch("/customers", {
+    const response = await fetch(`${uri}/customers`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,13 +45,14 @@ export const createCustomer = async (customerData) => {
 
 export const getAllCustomers = async () => {
   try {
-    const response = await fetch("/customers");
+    const response = await fetch(`${uri}/customers`);
 
     if (!response.ok) {
       throw new Error("Failed to fetch customers");
     }
 
     const data = await response.json();
+    // console.log(data)
     return data;
   } catch (error) {
     console.error("Error fetching customers:", error.message);
