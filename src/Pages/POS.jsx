@@ -193,7 +193,7 @@ function POS() {
               Rice And Curry
             </div>
             <div
-              className="bg-blue-500 col-start-2 col-end-2 row-start-4 row-end-6 flex text-xl p-4 cursor-pointer"
+              className="bg-blue-500 col-start-2 col-end-2 row-start-3 row-end-5 flex text-xl p-4 cursor-pointer"
               onClick={() => {
                 setMenuPopupShow(true);
                 setMenuCategory("StreetFood");
@@ -249,7 +249,7 @@ function POS() {
               )}
             </div>
             <div
-              className="bg-lite-bg-color col-start-3 col-end-3 row-start-6 row-end-9 flex text-xl p-1 cursor-pointer flex-row"
+              className="bg-lite-bg-color col-start-3 col-end-3 row-start-7 row-end-9 flex text-xl p-1 cursor-pointer flex-row"
               onClick={() => {
                 handleOpenOrderMethodPopup();
               }}
@@ -265,7 +265,7 @@ function POS() {
 
         <div className="flex flex-col p-2 justify-between basis-3/12 h-full bg-secondry-bg-color rounded-lg">
           {/* bill Items area */}
-          <div className="w-full h-96 overflow-y-scroll scroller flex flex-col space-y-2 snap-x">
+          <div className="w-full h-79 overflow-y-scroll scroller flex flex-col space-y-2 snap-x">
             {billItems.map((item, index) => {
               return (
                 <div
