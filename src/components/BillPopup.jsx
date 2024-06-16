@@ -90,7 +90,7 @@ function BillPopup({bill,onClose,newBill}) {
           <button
             className="flex w-full flex-row font-semibold bg-blue-bg-color justify-center py-3 rounded-lg mt-2"
             onClick={() => {
-              billService(bill);
+              billSend();
             }}
           >
             Create Bill

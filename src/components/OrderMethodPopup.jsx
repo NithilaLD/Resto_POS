@@ -32,6 +32,7 @@ function OrderMethodPopup({ orderMethod , onClose }) {
       setTableSelectionShow(true);
     }else{
       setTableSelectionShow(false)
+      orderMethod(orderMethodValue)
     }
     setOrderMethodValue(()=>{return value})
     console.log(orderMethodValue);

@@ -19,7 +19,7 @@ function AdminBilll() {
   }, []);
 
   return (
-    <div className="text-black">
+    <div className="text-black mt-5">
       <table className="w-full border-collapse">
         <thead>
           <tr>

@@ -250,6 +250,24 @@ function POS() {
                 />
               )}
             </div>
+
+            <div
+              className="bg-lite-bg-color col-start-2 col-end-2 row-start-7 row-end-9 flex text-xl p-1 cursor-pointer flex flex-row"
+              onClick={() => {
+                handleOpenOffersPopup();
+              }}
+            >
+              <span className="bg-green-600 h-full w-1"></span>
+              <div className="px-2 flex flex-coll">Offers</div>
+              {isOffersPopupOpen && (
+                <OffersPopup
+                  offers={offersChange}
+                  onClose={handleCloseOffersPopup}
+                />
+              )}
+            </div>
+
+
             <div
               className="bg-lite-bg-color col-start-3 col-end-3 row-start-7 row-end-9 flex text-xl p-1 cursor-pointer flex-row"
               onClick={() => {
@@ -267,8 +285,10 @@ function POS() {
 
         <div className="flex flex-col p-2 justify-between basis-3/12 bg-secondry-bg-color rounded-lg">
           {/* bill Items area */}
-          <div className="w-full overflow-y-scroll scroller flex flex-col space-y-2 snap-x" style={{ maxHeight: '49vh' }}/*290px*/>
-
+          <div
+            className="w-full overflow-y-scroll scroller flex flex-col space-y-2 snap-x"
+            style={{ maxHeight: "49vh" }} /*290px*/
+          >
             {billItems.map((item, index) => {
               return (
                 <div
