@@ -30,10 +30,16 @@ function AdminBilll() {
               Subtotal
             </th>
             <th className="border border-lite-bg-color font-normal text-black">
+              Offers
+            </th>
+            <th className="border border-lite-bg-color font-normal text-black">
               Tip
             </th>
             <th className="border border-lite-bg-color font-normal text-black">
               Total
+            </th>
+            <th className="border border-lite-bg-color font-normal text-black w-96">
+              Billed Date & Time
             </th>
           </tr>
         </thead>
@@ -45,13 +51,19 @@ function AdminBilll() {
                   {item.id}
                 </td>
                 <td className="text-right pr-2 border border-lite-bg-color text-black">
-                  {item.subtotal}
+                  {item.subtotal}.00
                 </td>
                 <td className="text-right pr-2 border border-lite-bg-color text-black">
-                  {item.tip}
+                  {item.offers}.00
                 </td>
                 <td className="text-right pr-2 border border-lite-bg-color text-black">
-                  {item.total}
+                  {item.tip}.00
+                </td>
+                <td className="text-right pr-2 border border-lite-bg-color text-black">
+                  {item.total}.00
+                </td>
+                <td className="text-right pr-2 border border-lite-bg-color text-black">
+                  {item.created_at}
                 </td>
               </tr>
             ))

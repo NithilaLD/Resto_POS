@@ -27,6 +27,7 @@ function AdminEditCustomerPopup({customer,update,onClose}) {
   const handleCustomerDelete = () => {
     deleteCustomer(customer.customer_id);
     update();
+    onClose();
   }
 
   return (
@@ -98,19 +99,27 @@ function AdminEditCustomerPopup({customer,update,onClose}) {
           </div>
         </div>
         <div className="flex w-full justify-between px-3 py-5">
-          <button className="bg-red-500  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+          <button
+            className="bg-red-500  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            onClick={() => {
+              handleCustomerDelete();
+            }}
+          >
             Delete
           </button>
           <div>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-             onClick={()=>{
-              handleCustomerUpdate();
-             }}
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              onClick={() => {
+                handleCustomerUpdate();
+              }}
             >
               Update
             </button>
-            <button className="bg-white text-slate-500  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            onClick={onClose}>
+            <button
+              className="bg-white text-slate-500  text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              onClick={onClose}
+            >
               Cancel
             </button>
           </div>

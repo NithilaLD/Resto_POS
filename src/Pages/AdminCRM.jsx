@@ -2,20 +2,29 @@ import React, { useState, useEffect } from "react";
 import'../darkcolor.css'
 import { getAllCustomers } from "../Services/CustomerService";
 import AdminEditCustomerPopup from "../components/AdminEditCustomerPopup";
+import AdminNewCustomerPopup from "../components/AdminNewCustomerPopup";
 
 function AdminCRM() {
   const [customers, setCustomers] = useState([]);
-  const [selectedCustomer, setSelectedCustomer] = useState({})
-  const [update, setUpdate] = useState(false)
+  const [selectedCustomer, setSelectedCustomer] = useState({});
+  const [update, setUpdate] = useState(false);
 
   // Popup stat Management
-  const [isNewCustomerPopupOpen, setIsNewCustomerPopupOpen] = useState()
-  const [isEditCustomerPopupOpen, setIsEditCustomerPopupOpen] = useState()
+  const [isNewCustomerPopupOpen, setIsNewCustomerPopupOpen] = useState();
+  const [isEditCustomerPopupOpen, setIsEditCustomerPopupOpen] = useState();
+
+  // Edit customer handlers
+  const handleOpenNewCustomerPopup = () => {
+    setIsNewCustomerPopupOpen(true)
+  };
+  const handleCloseNewCustomerPopup = () => {
+    setIsNewCustomerPopupOpen(false);
+  };
 
   // Edit customer handlers
   const handleOpenEditCustomerPopup = () => {
     setIsEditCustomerPopupOpen(true);
-  }
+  };
   const handleCloseEditCustomerPopup = () => {
     setIsEditCustomerPopupOpen(false);
   };
@@ -35,21 +44,29 @@ function AdminCRM() {
   }, [update]);
 
   const handlUpdate = () => {
-    if(update){
-      setUpdate(false)
-    }else{
+    if (update) {
+      setUpdate(false);
+    } else {
       setUpdate(true);
     }
-    
-  }
+  };
 
   return (
     <div className="flex flex-col w-full !text-black">
       {/* <span className="text-black w-full text-3xl">Customer Management</span> */}
       <div className="flex flex-row justify-end w-full">
-        <button className="bg-blue-bg-color text-white w-fit py-2 px-4 rounded-lg">
+        <button
+          className="bg-blue-bg-color text-white w-fit py-2 px-4 rounded-lg"
+          onClick={handleOpenNewCustomerPopup}
+        >
           New Customer
         </button>
+        {isNewCustomerPopupOpen && (
+          <AdminNewCustomerPopup
+            onClose={handleCloseNewCustomerPopup}
+            update={handlUpdate}
+          />
+        )}
       </div>
       <div
         className="mt-5 flex overflow-y-auto scrollbar-hide"
@@ -104,9 +121,15 @@ function AdminCRM() {
                 </td>
               </tr>
             )}
-            {isEditCustomerPopupOpen && <AdminEditCustomerPopup onClose={handleCloseEditCustomerPopup} customer={selectedCustomer} update={handlUpdate} />}
           </tbody>
         </table>
+        {isEditCustomerPopupOpen && (
+          <AdminEditCustomerPopup
+            onClose={handleCloseEditCustomerPopup}
+            customer={selectedCustomer}
+            update={handlUpdate}
+          />
+        )}
       </div>
     </div>
   );

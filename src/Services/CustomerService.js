@@ -84,7 +84,7 @@ export const updateCustomer = async (customerId, customerData) => {
 
 export const deleteCustomer = async (customerId) => {
   try {
-    const response = await fetch(`/customers/${customerId}`, {
+    const response = await fetch(`${uri}/customers/${customerId}`, {
       method: "DELETE",
     });
 
