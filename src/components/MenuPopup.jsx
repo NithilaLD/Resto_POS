@@ -89,10 +89,15 @@ function MenuPopUp(props) {
               <div className="h-96 my-4 flex flex-col">
                 <div className="flex w-full justify-between">
                   <span className="text-2xl">{name}</span>
-                  <span className="text-2xl ">{unitPrice.toFixed(2)}</span>
+                  <span className="text-2xl ">{amount.toFixed(2)}</span>
                 </div>
 
-                <div className="bg-lite-bg-color w-fit rounded-full p-2 mt-3">
+                <span className="text-md mt-1 text-slate-300">
+                  {/* Amount: {amount.toFixed(2)} */}
+                  Unite Price : {unitPrice.toFixed(2)}
+                </span>
+
+                <div className="bg-lite-bg-color w-fit rounded-full p-2 mt-8">
                   <i
                     className="fi fi-rr-minus-small p-4 cursor-pointer"
                     onClick={() => {
@@ -117,9 +122,7 @@ function MenuPopUp(props) {
                     }}
                   ></i>
                 </div>
-                <span className="text-2xl mt-3">
-                  Amount: {amount.toFixed(2)}
-                </span>
+
                 <div className="h-full w-full flex items-end">
                   <button
                     className="bg-blue-bg-color w-full py-2 px-4 rounded-lg"

@@ -3,7 +3,11 @@ import { billService } from "../Services/BillService";
 
 function BillPopup({bill,onClose,newBill}) {
 
-  
+  const billSend = () =>{
+    billService(bill)
+    newBill();
+    onClose();
+  }
     
   return (
     <div

@@ -7,6 +7,8 @@ import { billService } from "../Services/BillService";
 import BillPopup from "../components/BillPopup";
 import TipPopup from "../components/TipPopup";
 import OffersPopup from "../components/OffersPopup";
+import OrderMethodPopup from "../components/OrderMethodPopup";
+import BillItemPopup from "../components/BillItemPopup";
 
 function POS() {
   const [menu, setMenu] = useState(MenuData);
@@ -14,12 +16,15 @@ function POS() {
   const [billItems,setBillItems] = useState([]);
   const [billDescription, setBillDesription] = useState();
   const [menuCategory, setMenuCategory] = useState('');
+  const [selectedBillItem, setSelectedBillItem] = useState({})
 
   // Popup window state
   const [menuPopupShow, setMenuPopupShow] = useState(false);
   const [isBillPopupOpen, setIsBillPopupOpen] = useState(false);
   const [isTipPopupOpen, setIsTipPopupOpen] = useState(false);
-  const [isOffersPopupOpen, setIsOffersPopupOpen]= useState(false)
+  const [isOffersPopupOpen, setIsOffersPopupOpen] = useState(false);
+  const [isOrderMethodOpen, setIsOrderMethodOpen] = useState(false);
+  const [isBillItemPopupOpen, setIsBillItemPopupOpen] = useState(false);
 
   // bill description state
   const [customer,setCustomer] = useState('');
@@ -29,7 +34,8 @@ function POS() {
   const [offer,setOffer] = useState(0);
   const [total,setTotal] = useState(0);
 
-  useEffect(()=>{billCalculate()},[billItems,offer,tip])
+  useEffect(()=>{billCalculate()},[billItems,offer,tip]);
+  useEffect(()=>{console.log(selectedBillItem)},[selectedBillItem])
 
   const billCalculate = ()=>{
     let subTotalValue = 0;
@@ -105,6 +111,29 @@ function POS() {
     setOffer(value)
   }
 
+  // Oder Method Handler
+  const handleOpenOrderMethodPopup = () => {
+    setIsOrderMethodOpen(true);
+  };
+  const handleCloseOrderMethodPopup = () => {
+    setIsOrderMethodOpen(false);
+  };
+  const orderMethodHandle = (value) => {
+    setOrderMethod(value);
+  }
+
+  // Bill Item Popup Handler
+  const handleOpenBillItemPopup = () => {
+    setIsBillItemPopupOpen(true);
+  };
+  const handleCloseBillItemPopup = () => {
+    setIsBillItemPopupOpen(false);
+  };
+  const handleSelectBillItem = () => {
+    return selectedBillItem;
+  }
+
+
 
   return (
     <>
@@ -155,6 +184,24 @@ function POS() {
               Sides
             </div>
             <div
+              className="bg-purple-500 col-start-1 col-end-2 row-start-3 row-end-5 flex text-xl p-4 cursor-pointer"
+              onClick={() => {
+                setMenuPopupShow(true);
+                setMenuCategory("RiceAndCurry");
+              }}
+            >
+              Rice And Curry
+            </div>
+            <div
+              className="bg-blue-500 col-start-2 col-end-2 row-start-4 row-end-6 flex text-xl p-4 cursor-pointer"
+              onClick={() => {
+                setMenuPopupShow(true);
+                setMenuCategory("StreetFood");
+              }}
+            >
+              Street Food
+            </div>
+            <div
               className="bg-gray-500 col-start-3 col-end-4 row-start-3 row-end-5 flex text-xl p-4 cursor-pointer"
               onClick={() => {
                 setMenuPopupShow(true);
@@ -189,13 +236,28 @@ function POS() {
             <div
               className="bg-lite-bg-color col-start-1 col-end-2 row-start-7 row-end-9 flex text-xl p-1 cursor-pointer flex flex-row"
               onClick={() => {
-                handleOpenOffersPopup()
+                handleOpenOffersPopup();
               }}
             >
               <span className="bg-green-600 h-full w-1"></span>
               <div className="px-2 flex flex-coll">Offers</div>
               {isOffersPopupOpen && (
-                <OffersPopup offers={offersChange} onClose={handleCloseOffersPopup} />
+                <OffersPopup
+                  offers={offersChange}
+                  onClose={handleCloseOffersPopup}
+                />
+              )}
+            </div>
+            <div
+              className="bg-lite-bg-color col-start-3 col-end-3 row-start-6 row-end-9 flex text-xl p-1 cursor-pointer flex-row"
+              onClick={() => {
+                handleOpenOrderMethodPopup();
+              }}
+            >
+              <span className="bg-yellow-600 h-full w-1"></span>
+              <div className="px-2 flex flex-coll">Order Method</div>
+              {isOrderMethodOpen && (
+                <OrderMethodPopup onClose={handleCloseOrderMethodPopup} />
               )}
             </div>
           </div>
@@ -206,13 +268,23 @@ function POS() {
           <div className="w-full h-96 overflow-y-scroll scroller flex flex-col space-y-2 snap-x">
             {billItems.map((item, index) => {
               return (
-                <BillItem
+                <div
                   key={index}
-                  itemName={item.name}
-                  unitPrice={item.unitPrice.toFixed(2)}
-                  units={item.unitCount}
-                  amount={item.amount.toFixed(2)}
-                />
+                  onClick={() => {
+                    setSelectedBillItem(item);
+                    // console.log(item);
+                    // console.log(selectedBillItem);
+                    handleOpenBillItemPopup();
+                  }}
+                >
+                  <BillItem
+                    key={index}
+                    itemName={item.name}
+                    unitPrice={item.unitPrice.toFixed(2)}
+                    units={item.unitCount}
+                    amount={item.amount.toFixed(2)}
+                  />
+                </div>
               );
             })}
 
@@ -223,6 +295,12 @@ function POS() {
               amount="400.00"
             /> */}
           </div>
+          {isBillItemPopupOpen && (
+            <BillItemPopup
+              item={selectedBillItem}
+              onClose={handleCloseBillItemPopup}
+            />
+          )}
 
           {/* bill amount area */}
           <div className="flex flex-col bg-lite-bg-color rounded-lg">
@@ -248,14 +326,18 @@ function POS() {
               className="flex flex-row bg-blue-bg-color justify-center py-3 rounded-lg mt-2"
               onClick={() => {
                 billCreate();
-                
+
                 handleOpenBillPopup();
               }}
             >
               View Checks
             </button>
             {isBillPopupOpen && (
-              <BillPopup onClose={handleCloseBillPopup} bill={bill} newBill={handleNewBill}/>
+              <BillPopup
+                onClose={handleCloseBillPopup}
+                bill={bill}
+                newBill={handleNewBill}
+              />
             )}
           </div>
         </div>

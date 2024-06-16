@@ -15,7 +15,8 @@ function TipPopup({ tip, onClose }) {
   return (
     <div
       className="z-0 fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
-      onClick={() => {
+      onClick={(e) => {
+        e.stopPropagation();
         onClose();
       }}
     >
@@ -33,7 +34,7 @@ function TipPopup({ tip, onClose }) {
             }}
           ></i>
         </div>
-        <div className="flex w-full h-80 flex-col p-2 h-full justify-between">
+        <div className="flex w-full h-80 flex-col p-2  justify-between">
           <div className="flex flex-row justify-between">
             <span className="text-2xl">Tip</span>
             <input
@@ -45,7 +46,10 @@ function TipPopup({ tip, onClose }) {
           </div>
           <button
             className="flex w-full flex-row font-medium bg-blue-bg-color justify-center py-3 rounded-lg mt-2"
-            onClick={handleAddTip}
+            onClick={ ()=>{
+              handleAddTip();
+              onClose();
+            }}
           >
             Add Tip
           </button>

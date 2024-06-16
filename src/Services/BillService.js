@@ -21,3 +21,20 @@ export const billService = async(billObject)=>{
       console.error("Error:", response.status);
     }
 }
+
+export const allBills = async()=>{
+  try {
+    const response = await fetch("http://localhost:3060/bills");
+    if (!response.ok) {
+      throw new Error(`An error occurred: ${response.statusText}`);
+    }
+
+    const bills = await response.json();
+    // console.log(bills);
+    // console.log('hello');
+    return bills;
+  } catch (error) {
+    console.error("Error fetching bills:", error);
+    return [];
+  }
+}
