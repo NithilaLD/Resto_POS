@@ -14,6 +14,7 @@ function Login(){
   const navigate = useNavigate();
   const [password, setPassword] = useState("")
   const [divBgColor, setDivBgColor] = useState('#070005');
+  const [bColor, setbColor] = useState('#FDDC5C');
   const [round,setRound]=useState(0);
   const [spanBgColor1, setSpanBgColor1] = useState('#070005');
   const [spanBgColor2, setSpanBgColor2] = useState('#070005');
@@ -24,6 +25,7 @@ function Login(){
     const digit = num.toString();
     await setPassword((pre)=>pre + digit);
     setDivBgColor('#00008B');
+    setbColor('AA6C39');
     setRound((prev)=>prev+1);
     if(round===0){setSpanBgColor1('white');setSpanBgColor2('#8B7500');setSpanBgColor3('#8B7500');setSpanBgColor4('#8B7500');}
     else if(round===1){setSpanBgColor1('white');setSpanBgColor2('white');setSpanBgColor3('#8B7500');setSpanBgColor4('#8B7500');}
@@ -105,7 +107,7 @@ function Login(){
               9
             </button>
             <button></button>
-            <button className="text-white justify-center items-center active:text-yellow-500 hover:text-yellow-100 cursor-pointer" onClick={handleButtonClick2}>
+            <button className="text-white justify-center items-center active:text-yellow-500 cursor-pointer" style={{color: hover ? bcolor : bcolor }} onClick={handleButtonClick2}>
             Cancel Clock In/Out
             </button>
             <button></button>
