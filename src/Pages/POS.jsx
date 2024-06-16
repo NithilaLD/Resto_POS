@@ -268,10 +268,14 @@ function POS() {
 
         <div className="flex flex-col p-2 justify-between basis-3/12 bg-secondry-bg-color rounded-lg">
           {/* bill Items area */}
+<<<<<<< HEAD
           <div
             className="w-full overflow-y-scroll scroller flex flex-col space-y-2 snap-x"
             style={{ maxHeight: "calc(100vh - 315px)" }}
           >
+=======
+          <div className="w-full h-79 overflow-y-scroll scroller flex flex-col space-y-2 snap-x">
+>>>>>>> a2eefb6c33de2afb155783bab51c61cc6c1d6fc3
             {billItems.map((item, index) => {
               return (
                 <div

@@ -105,7 +105,7 @@ function Login(){
               9
             </button>
             <button></button>
-            <button className="text-white justify-center items-center active:text-yellow-500 hover:text-yellow-100 cursor-pointer" onClick={handleButtonClick2}>
+            <button className="text-white justify-center items-center active:text-yellow-300 hover:text-yellow-500 cursor-pointer" onClick={handleButtonClick2}>
             Cancel Clock In/Out
             </button>
             <button></button>
