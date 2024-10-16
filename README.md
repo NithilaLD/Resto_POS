@@ -1,4 +1,4 @@
-# Resto Point Of Sale System(Resto POS)
+# Resto Point Of Sale System
 
 # Overview
 The restaurant industry is demanding, requiring efficient management to ensure customer satisfaction and smooth operations. The Point of Sale (POS) system plays a critical role in this, handling orders, inventory, menus, and customer data. Our goal is to develop a POS system that is easy to use, highly customizable, and can be tailored to suit any restaurant’s unique processes.
