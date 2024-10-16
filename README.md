@@ -33,4 +33,4 @@ This system is built to fit into any restaurant’s existing operations without 
 
 #
 
-This structure should provide a professional and clear explanation of your project, guiding users and contributors through installation, usage, and contribution guidelines. Let me know if you'd like to adjust any sections!
+These details would provide a professional and clear explanation of this system.
