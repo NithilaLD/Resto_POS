@@ -1,0 +1,31 @@
+{
+    "billDescription":{
+      "subTotal": 2950,
+      "offers": 0,
+      "tip": 0,
+      "total": 2950
+    },
+    "billItems":[
+      {
+        "id": 3,
+        "name": "Fish Fingers",
+        "unitPrice": 500,
+        "unitCount": 1,
+        "amount": 500
+      },
+      {
+        "id": 54,
+        "name": "Lemon Iced Tea",
+        "unitPrice": 250,
+        "unitCount": 1,
+        "amount": 250
+      },
+      {
+        "id": 46,
+        "name": "Mango Pudding",
+        "unitPrice": 350,
+        "unitCount": 1,
+        "amount": 350
+      }
+    ]
+}
