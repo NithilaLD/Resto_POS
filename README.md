@@ -1,7 +1,8 @@
 # Resto Point Of Sale System
 Resto POS 
+
 Overview
-The restaurant industry is demanding, requiring efficient management to ensure customer satisfaction and smooth operations. The Point of Sale (POS) system plays a critical role in this, handling orders, inventory, menus, and customer data. Our goal is to develop a POS system that is easy to use, highly customizable, and can be tailored to suit any restaurant’s unique processes.
+## The restaurant industry is demanding, requiring efficient management to ensure customer satisfaction and smooth operations. The Point of Sale (POS) system plays a critical role in this, handling orders, inventory, menus, and customer data. Our goal is to develop a POS system that is easy to use, highly customizable, and can be tailored to suit any restaurant’s unique processes.
 
 Most POS systems available today lack flexibility in customization, often forcing restaurants to adapt to the system rather than the other way around. Our project aims to solve this by building a POS solution that offers restaurants the ability to mold the system according to their specific workflow and requirements.
 
