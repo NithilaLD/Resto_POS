@@ -30,6 +30,7 @@ This system is built to fit into any restaurant’s existing operations without 
 3. Reduce waste and improve inventory control.
 4. Provide detailed insights into the restaurant’s operations through analytics and reporting.
 
+Lanuages Used - Recat JS, Node JS, Postgrace SQL
 #
 
 These details would provide a professional and clear explanation of this system.
