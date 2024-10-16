@@ -1,2 +1,2 @@
-# Resto Point Of Sale System
+#                                                                        Resto Point Of Sale System
 Code 
